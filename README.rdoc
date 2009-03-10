@@ -1,0 +1,3 @@
+= Scopes Revisited
+
+Looking at a number of ways to implement scopes in Active Record.
