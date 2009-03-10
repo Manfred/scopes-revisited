@@ -1,10 +1,11 @@
-require File.expand_path('../test_helper', __FILE__)
-
 class Book
-  def find(action, options={})
-    options = scope_options(:find).merge(options)
-    sql = construct_sql_for(action, options)
-    find_by_sql(sql)
+  def self.with_scope(method, options={}, action=:merge, &block)
+    eval("@block_scope_options = #{options.inspect}", block.binding)
+    block.call
+  end
+  
+  def self.find(action, options={})
+    p @block_scope_options
   end
 end
 
