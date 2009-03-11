@@ -1,4 +1,7 @@
+require 'active_record/scoping/scopes'
+
 module ActiveRecord
-  module Scoping
+  class Base
+    include ActiveRecord::Scoping::Scopes
   end
 end
