@@ -10,3 +10,7 @@ $:.unshift(File.expand_path('../../lib', __FILE__))
 require 'active_record'
 
 $:.unshift(File.expand_path('../', __FILE__))
+
+class << ActiveRecord::Base
+  public :with_scope, :scope_stack
+end
