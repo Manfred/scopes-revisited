@@ -18,7 +18,7 @@ class Book
   end
   
   def self.scope_conditions(method)
-    self.scope_stack.first
+    self.scope_stack.last
   end
 end
 
