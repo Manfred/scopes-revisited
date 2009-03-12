@@ -6,6 +6,12 @@ class BaseTest < ActiveSupport::TestCase
     Book.scope_stack = []
   end
 
+  test "should save the atributes set through new" do
+    attributes = { :name => 'The Power of Negative Thinking' }
+    book = Book.new(attributes)
+    assert_equal attributes, book.attributes
+  end
+
   test "should properly merge empty scope stacks" do
     Book.scope_stack = []
     assert_equal({}, Book.merge_scope(:find))

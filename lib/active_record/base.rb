@@ -1,5 +1,11 @@
 module ActiveRecord
   class Base
+    attr_accessor :attributes
+
+    def initialize(attributes={})
+      @attributes = attributes
+    end
+
     def self.find(action, query_parameters={})
       query_parameters = merge_scope(:find, query_parameters)
       query_parameters[:table_name] ||= name.to_s.tableize

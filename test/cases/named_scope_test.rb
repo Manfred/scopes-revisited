@@ -2,8 +2,15 @@ require File.expand_path('../../test_helper', __FILE__)
 require 'models/book'
 
 class NamedScopeTest < ActiveSupport::TestCase
-  test "named scopes should intialize a new scope instance" do
+  test "named scope methods should initialize a new scope instance" do
     assert Book.published.kind_of?(ActiveRecord::Scoping::Scope)
+  end
+
+  test "a Scope should delegate scopes to the scope owner" do
+    owner = stub
+    owner.expects(:scopes)
+    scope = ActiveRecord::Scoping::Scope.new(owner, :published)
+    scope.scopes
   end
 
   test "named scopes should be stored on the class for later retrieval" do
