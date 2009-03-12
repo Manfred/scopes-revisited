@@ -43,6 +43,15 @@ class BaseTest < ActiveSupport::TestCase
     end 
   end
 
+  test "should merge query parameters from the outside to the inside" do
+    Book.expects(:construct_finder_sql).with({:select => :all, :table_name => 'books', :conditions => { :published => true }})
+    Book.with_scope(:find, :conditions => { :published => false }) do
+      Book.with_scope(:find, :conditions => { :published => true }) do
+        Book.find(:all)
+      end
+    end
+  end
+
   def teardown
     Book.scope_stack = []
   end
