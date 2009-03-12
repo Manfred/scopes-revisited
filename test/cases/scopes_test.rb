@@ -6,10 +6,17 @@ class ScopesTest < ActiveSupport::TestCase
     assert_equal [], Book.scope_stack
   end
 
+  test "including scoping for a second time shouldn't reset the scope stack" do
+    Book.with_scope(:find, {}) do
+      load File.expand_path('../../models/regular.rb', __FILE__)
+      assert_equal [[:find, {}]], Book.scope_stack
+    end
+  end
+
   test "with_scope should properly maintain the scope stack between nested scope blocks" do
     published_scope = [:find, {:conditions => { :published => true }}]
     draft_scope     = [:find, {:conditions => { :published => false }}]
-    
+
     assert_equal [], Book.scope_stack
     Book.with_scope(*published_scope) do
       assert_equal [published_scope], Book.scope_stack

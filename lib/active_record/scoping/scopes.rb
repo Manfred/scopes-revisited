@@ -4,7 +4,7 @@ module ActiveRecord
   module Scoping
     module Scopes
       def self.extended(base)
-        Thread.current[:scope_stacks] = {}
+        Thread.current[:scope_stacks] ||= {}
       end
 
       protected
@@ -18,8 +18,7 @@ module ActiveRecord
         end
 
         def scope_stack
-          scope_stacks = Thread.current[:scope_stacks]
-          scope_stacks[name] ||= []
+          Thread.current[:scope_stacks][name] ||= []
         end
     end
   end
