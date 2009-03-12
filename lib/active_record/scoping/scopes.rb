@@ -8,8 +8,8 @@ module ActiveRecord
       end
 
       protected
-        def with_scope(method, scope_options, &block)
-          self.scope_stack << [method, scope_options]
+        def with_scope(method, query_parameters, &block)
+          self.scope_stack << [method, query_parameters]
           begin
             block.call
           ensure
