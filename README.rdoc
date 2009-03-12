@@ -1,3 +1,14 @@
 = Scopes Revisited
 
-Looking at a number of ways to implement scopes in Active Record.
+Trying to find better ways to implement scopes in Active Record.
+
+== Objectives
+
+* Make scope stack merging more transparent (ie. not in a method with 5-level-deep nested if statements)
+* Make scopes thread-safe
+* Re-evaluate method and variable naming
+
+== Ideas
+
+* Merge scope stacks as late as possible to enable smarter merging
+* Delegate and federate stack merging (ie. Scopes don't need to know how associations merge their query parameters)
