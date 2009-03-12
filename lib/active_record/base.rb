@@ -15,7 +15,7 @@ module ActiveRecord
     def self.merge_scope(method, options={})
       merged = {}
       scope_stack.each do |scope_method, scope_options|
-        merged.deep_merge!(scope_options) if method == scope_method
+        merged.deep_merge!(scope_options) if [:all, method].include?(scope_method)
       end
       merged
     end

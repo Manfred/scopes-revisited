@@ -30,6 +30,12 @@ class BaseTest < ActiveSupport::TestCase
     assert_equal({}, Book.merge_scope(:create))
   end
 
+  test "should merge the :all method with all others" do
+    Book.scope_stack = [[:find, { :conditions => { :isbn => '978-0345508935' } }], [:all, { :conditions => { :published => false } }]]
+    assert_equal({ :conditions => { :isbn => '978-0345508935', :published => false } }, Book.merge_scope(:find))
+    assert_equal({ :conditions => { :published => false }}, Book.merge_scope(:create))
+  end
+
   test "should build query parameters for a unscoped find" do
     Book.expects(:construct_finder_sql).with({:select => :all, :table_name => 'books'})
     Book.find(:all)
