@@ -1,8 +1,8 @@
 module ActiveRecord
   module Scoping
     class Scope
-      attr_accessor :owner
-      delegate :scopes, :to => :owner
+      attr_accessor :owner, :name
+      delegate :scopes, :scope_stack, :to => :owner
 
       def initialize(owner, name)
         @owner, @name = owner, name
@@ -12,7 +12,12 @@ module ActiveRecord
         if scopes[method]
           ActiveRecord::Scoping::Scope.new(self, method)
         else
-          owner.send(method, *arguments, &block)
+          scope_stack.unshift [METHOD_TO_ACTION[method], scopes[name]]
+          begin
+            owner.send(method, *arguments, &block)
+          ensure
+            scope_stack.shift
+          end
         end
       end
     end

@@ -3,7 +3,8 @@ module ActiveRecord
     attr_accessor :attributes
 
     def initialize(attributes={})
-      @attributes = attributes
+      query_parameters = self.class.merge_scope(:create)[:conditions] || {}
+      @attributes = query_parameters.merge(attributes)
     end
 
     def self.find(action, query_parameters={})
