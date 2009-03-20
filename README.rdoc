@@ -2,7 +2,7 @@
 
 Trying to find better ways to implement scopes in Active Record.
 
-See http://github.com/Manfred/rails/tree/scoping for the actual merge with Rails.
+See http://github.com/Manfred/rails/tree/scopes for the actual merge with Rails.
 
 == Objectives
 
