@@ -1,1 +1,15 @@
 - Scout Lighthouse and gather tests for existing problems with scopes
+  - Merge string conditions if possible, otherwise raise a sensible exception
+    http://rails.lighthouseapp.com/projects/8994/tickets/2199-default_scope-errors-with-named_scope
+  - Merge order scope options instead of overriding them
+    http://rails.lighthouseapp.com/projects/8994/tickets/2253-named_scope-and-nested-order-clauses
+  - Make associations respect the default scope
+    http://rails.lighthouseapp.com/projects/8994/tickets/2297-through-associations-dont-respect-default_scope
+  - All scope definitions of _any_ kind should override default scopes
+    http://rails.lighthouseapp.com/projects/8994/tickets/2257-default_scope-with-named_scope-or-scoped-merge-broken-on-23
+  - Default scope should accept a proc
+    http://rails.lighthouseapp.com/projects/8994/tickets/1812-default_scope-cant-take-procs
+  - Find a way to merge :select query parameters in count queries.
+    http://rails.lighthouseapp.com/projects/8994/tickets/1334-count-calculations-should-respect-scoped-selects
+  - Implement #many? on scopes and associations so they don't load the entire collection.
+    http://rails.lighthouseapp.com/projects/8994/tickets/1500-named-scopes-should-implement-many-so-theyll-use-count
