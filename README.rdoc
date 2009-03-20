@@ -2,6 +2,8 @@
 
 Trying to find better ways to implement scopes in Active Record.
 
+See http://github.com/Manfred/rails/tree/scoping for the actual merge with Rails.
+
 == Objectives
 
 * Make scope stack merging more transparent (ie. not in a method with 5-level-deep nested if statements)
