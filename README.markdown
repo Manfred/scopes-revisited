@@ -15,9 +15,7 @@ See [http://github.com/Manfred/rails/tree/scopes](http://github.com/Manfred/rail
 * Merge scope stacks as late as possible to enable smarter merging
 * Delegate and federate stack merging (ie. Scopes don't need to know how associations merge their query parameters)
 
----
-
-### TODO
+## TODO
 
 * Refactor existing named scope tests and make them run
 - Implement default scopes (AR::Base.default_scope)
@@ -41,6 +39,6 @@ See [http://github.com/Manfred/rails/tree/scopes](http://github.com/Manfred/rail
   - Implement #many? on scopes and associations so they don't load the entire collection.
     [http://rails.lighthouseapp.com/projects/8994/tickets/1500](http://rails.lighthouseapp.com/projects/8994/tickets/1500)
 
-### DONE
+## DONE
 
 - Start merging the new scope implementation into Rails and get some simple queries running
